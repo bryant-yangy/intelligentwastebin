@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form action="/identUser" method="post" enctype="multipart/form-data">
+    <input type="file" id="image" name="image" value="请选择文件" onchange="preview()" >
+    <input type="submit" value="上传">
+
+</form>
+<img src="" id="preview"/>
+<script>
+    function preview() {
+        // 获取图片选择框中图片的二进制信息
+        var image = document.getElementById("image");
+        var file = image.files[0]; // 拿到数组中第一个图片文件
+
+        // 读取文件内容
+        var reader = new FileReader();
+        // 定义事件
+        reader.onload = function() {
+            // 获取结果
+            document.getElementById("preview").src = this.result;
+        };
+        // 开始读取
+        reader.readAsDataURL(file);
+    }
+</script>
+</body>
+</html>

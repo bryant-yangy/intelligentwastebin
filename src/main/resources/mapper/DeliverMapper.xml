@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yyd.intelligentwastebin.mapper.DeliverMapper">
+    <insert id="insert" useGeneratedKeys="true"  keyProperty="id">
+        insert into deliver(user_name,name,trash,points ,date) value (#{userName},#{name},#{trash},#{points},#{date})
+    </insert>
+    <select id="findAll" resultType="com.yyd.intelligentwastebin.domain.Deliver">
+        select id,user_name userName,trash,points,date from deliver
+    </select>
+    <select id="findByUserName" resultType="com.yyd.intelligentwastebin.domain.Deliver">
+        select id,user_name userName,trash,points,date from deliver where user_Name=#{name}
+    </select>
+</mapper>

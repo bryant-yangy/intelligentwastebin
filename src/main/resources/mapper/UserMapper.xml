@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+
+<mapper namespace="com.yyd.intelligentwastebin.mapper.UserMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        insert into user (username,name,phone,password,points,hasFace,create_date)
+          values
+       (#{username},#{name},#{phone},#{password},#{points},'false',#{createDate})
+    </insert>
+
+    <select id="findByName"  resultType="com.yyd.intelligentwastebin.domain.User">
+        select id,username,name,phone,points,create_date createDate from user where username = #{username}
+    </select>
+
+    <select id="findById"  resultType="com.yyd.intelligentwastebin.domain.User">
+        select id,username,name,phone,points,create_date createDate from user where id = #{id}
+    </select>
+
+    <update id ="updatePoints">
+        update user set points = #{points} where id = #{id}
+    </update>
+    <update id="insertFace" >
+            update user set hasFace = "true" where id = #{id}
+    </update>
+
+    <select id="findAll"  resultType="com.yyd.intelligentwastebin.domain.User">
+        select id,username,name,phone,points,create_date createDate from user
+    </select>
+
+    <select id="getCount" resultType="int">
+        select count(id) from user;
+    </select>
+
+</mapper>
