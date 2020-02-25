@@ -27,4 +27,16 @@ public class DeliverServiceImpl implements DeliverService {
     public List<Deliver> findByUserName(String name) {
         return deliverMapper.findByUserName(name);
     }
+
+    @Override
+    public List<Deliver> findDeliverPage(int page, int limit) {
+        int n = (page - 1) * limit;
+        int m = limit;
+        return deliverMapper.findByPage(n, m);
+    }
+
+    @Override
+    public int getCount() {
+        return deliverMapper.getCount();
+    }
 }

@@ -7,6 +7,7 @@ import com.yyd.intelligentwastebin.utils.FaceUtil;
 import com.yyd.intelligentwastebin.utils.Md5Util;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -16,7 +17,12 @@ import java.io.*;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
+/**
+ * @author yangyidong
+ * @version 1.0
+ * @created 2020/2/16
+ */
+@CrossOrigin("*")
 @RestController
 public class UserController {
     @Autowired
@@ -61,6 +67,15 @@ public class UserController {
     @RequestMapping("/getUserList")
     public ResponseEntity<Map> getUserList() {
         List<User> list = userService.findAll();
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("code", 0);
+        result.put("data", list);
+        return ResponseEntity.ok(result);
+    }
+
+    @RequestMapping("/getUserPage")
+    public ResponseEntity<Map> getUserPage(int page,int limit) {
+        List<User> list = userService.findUserPage(page,limit);
         HashMap<String, Object> result = new HashMap<>();
         result.put("code", 0);
         result.put("data", list);

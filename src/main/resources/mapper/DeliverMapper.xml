@@ -11,7 +11,14 @@
     <select id="findAll" resultType="com.yyd.intelligentwastebin.domain.Deliver">
         select id,user_name userName,trash,points,date from deliver
     </select>
+    <select id="findByPage" resultType="com.yyd.intelligentwastebin.domain.Deliver">
+        select id,user_name userName,trash,points,date from deliver limit #{n},#{m}
+    </select>
+
     <select id="findByUserName" resultType="com.yyd.intelligentwastebin.domain.Deliver">
         select id,user_name userName,trash,points,date from deliver where user_Name=#{name}
+    </select>
+    <select id="getCount" resultType="int">
+        select count(id) from deliver;
     </select>
 </mapper>

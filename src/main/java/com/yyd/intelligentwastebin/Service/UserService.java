@@ -14,4 +14,5 @@ public interface UserService {
       User findById(int id);
       void updatePoints(User user);
       int getCount();
+      List<User> findUserPage(int currentPage,int limit);
 }

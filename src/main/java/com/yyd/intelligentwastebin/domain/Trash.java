@@ -1,8 +1,11 @@
 package com.yyd.intelligentwastebin.domain;
 
 public class Trash {
+
     private int id;
+
     private String trashName;
+
     private int points;
 
     public Trash(int id, String trashName, int points) {

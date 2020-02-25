@@ -15,7 +15,7 @@ public class AdminTest {
     AdminService adminService;
     @Test
     public  void insert(){
-        Admin admin = new Admin(0, "admin", Md5Util.md5("123"));
+        Admin admin = new Admin(0, "yyd", Md5Util.md5("123"));
         adminService.insert(admin);
     }
     @Test

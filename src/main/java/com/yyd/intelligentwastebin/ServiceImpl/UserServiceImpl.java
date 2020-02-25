@@ -45,4 +45,11 @@ public class UserServiceImpl implements UserService {
     public int getCount() {
         return userMapper.getCount();
     }
+
+    @Override
+    public List<User> findUserPage(int page, int limit) {
+        int n = (page - 1) * limit;
+        int m = limit;
+        return userMapper.findByPage(n, m);
+    }
 }

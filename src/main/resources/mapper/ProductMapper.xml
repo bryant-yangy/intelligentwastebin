@@ -16,11 +16,14 @@
     <select id="findAll"  resultType="com.yyd.intelligentwastebin.domain.Product">
         select id,product_name productName,points,account,infor,image from product;
     </select>
+    <select id="findByPage"  resultType="com.yyd.intelligentwastebin.domain.Product">
+        select id,product_name productName,points,account,infor,image from product limit #{n},#{m};
+    </select>
     <select id="findById"  resultType="com.yyd.intelligentwastebin.domain.Product">
         select id,product_name productName,points,infor,account,image from product where id = #{id};
     </select>
     <update id="updateProduct">
-            update product set account = #{account},points = #{points} where id=#{id}
+            update product set account = #{account},points = #{points},product_name =#{productName},infor=#{infor}where id=#{id}
     </update>
     <select id="getCount" resultType="int">
         select count(id) from product;

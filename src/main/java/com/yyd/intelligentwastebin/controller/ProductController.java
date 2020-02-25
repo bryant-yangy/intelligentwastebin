@@ -8,6 +8,7 @@ import com.yyd.intelligentwastebin.domain.Product;
 import com.yyd.intelligentwastebin.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
@@ -15,7 +16,12 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.io.*;
-
+/**
+ * @author yangyidong
+ * @version 1.0
+ * @created 2020/2/16
+ */
+@CrossOrigin("*")
 @RestController
 public class ProductController {
     @Autowired
@@ -65,6 +71,23 @@ public class ProductController {
         result.put("data",list);
         return ResponseEntity.ok(result);
     }
+    @RequestMapping("/getProductPage")
+    public ResponseEntity findByPage(int page,int limit){
+        List<Product> list = productService.findByPage(page,limit);
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("code",0);
+        result.put("data",list);
+        return ResponseEntity.ok(result);
+    }
+    @RequestMapping("/getProductCount")
+    public ResponseEntity getCount(){
+        int count = productService.getCount();
+        HashMap<String, Object> result = new HashMap<>();
+        result.put("code",0);
+        result.put("data",count);
+        return ResponseEntity.ok(result);
+    }
+
     @RequestMapping("/purchaseProduct")
     public ResponseEntity purchaseProduct(int userId,int productId,int account){
         User user = userService.findById(userId);
@@ -84,17 +107,25 @@ public class ProductController {
         product.setAccount(product.getAccount()-account);
         userService.updatePoints(user);
         productService.updateProduct(product);
-        Indent indent = new Indent(0, user.getUsername(), product.getProductName(), account, new Date(), user.getName());
+        Indent indent = new Indent(0, user.getUsername(), product.getProductName(), account, new Date(), user.getName(),product.getPoints());
         indentService.insert(indent);
         result.put("code",0);
         result.put("data","ok");
         return ResponseEntity.ok(result);
     }
 
-    @RequestMapping("/productDelete")
+    @RequestMapping("/deleteProduct")
     public ResponseEntity productDelete(int id){
         HashMap<String, Object> result = new HashMap<>();
         productService.delete(id);
+        result.put("code",0);
+        result.put("data","ok");
+        return ResponseEntity.ok(result);
+    }
+    @RequestMapping("/updateProduct")
+    public ResponseEntity updateProduct(Product product){
+        HashMap<String, Object> result = new HashMap<>();
+        productService.updateProduct(product);
         result.put("code",0);
         result.put("data","ok");
         return ResponseEntity.ok(result);

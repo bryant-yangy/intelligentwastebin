@@ -7,6 +7,7 @@ import com.yyd.intelligentwastebin.utils.Base64Util;
 import com.yyd.intelligentwastebin.utils.FaceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,12 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
+/**
+ * @author yangyidong
+ * @version 1.0
+ * @created 2020/2/16
+ */
+@CrossOrigin("*")
 @RestController
 public class FaceController {
 

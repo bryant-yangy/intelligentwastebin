@@ -11,14 +11,26 @@ import java.util.List;
 @Service
 public class IndentServiceImpl implements IndentService {
     @Autowired
-    IndentMapper orderMapper;
+    IndentMapper  indentMapper;
     @Override
     public void insert(Indent indent) {
-        orderMapper.insert(indent);
+        indentMapper.insert(indent);
     }
 
     @Override
     public List<Indent> findByUserName(String username) {
-        return orderMapper.findByUserName(username);
+        return  indentMapper.findByUserName(username);
+    }
+
+    @Override
+    public List<Indent> findIdentPage(int page, int limit) {
+        int n = (page - 1) * limit;
+        int m = limit;
+        return  indentMapper.findByPage(n, m);
+    }
+
+    @Override
+    public int getCount() {
+        return indentMapper.getCount();
     }
 }

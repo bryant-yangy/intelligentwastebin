@@ -12,14 +12,22 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductMapper productMapper;
+
     @Override
     public int insert(Product product) {
-        return  productMapper.insert(product);
+        return productMapper.insert(product);
     }
 
     @Override
     public List<Product> findAll() {
         return productMapper.findAll();
+    }
+
+    @Override
+    public List<Product> findByPage(int page, int count) {
+        int n = (page - 1) * count;
+        int m = count;
+        return productMapper.findByPage(n, count);
     }
 
     @Override

@@ -21,6 +21,13 @@ public class ProductTest {
 
     }
     @Test
+    void  findByPage(){
+        List<Product> byPage = productService.findByPage(2, 5);
+        for (Product product : byPage) {
+            System.out.println(product);
+        }
+    }
+    @Test
     void  findById(){
 
     }

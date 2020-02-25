@@ -12,7 +12,25 @@ public class Indent {
     @JsonFormat(timezone = "GMT+8", pattern = "yyyy-MM-dd hh:mm:ss")
     private Date date;
     private String name;
+    private int points;
 
+    public int getPoints() {
+        return points;
+    }
+
+    public void setPoints(int points) {
+        this.points = points;
+    }
+
+    public Indent(int id, String userName, String productName, int account, Date date, String name, int points) {
+        this.id = id;
+        this.userName = userName;
+        this.productName = productName;
+        this.account = account;
+        this.date = date;
+        this.name = name;
+        this.points = points;
+    }
 
     public int getId() {
         return id;

@@ -36,4 +36,7 @@
         select count(id) from user;
     </select>
 
+    <select id="findByPage"  resultType="com.yyd.intelligentwastebin.domain.User">
+        select id,username,name,phone,points,create_date createDate from user limit #{n},#{m}
+    </select>
 </mapper>

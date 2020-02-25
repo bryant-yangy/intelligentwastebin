@@ -58,6 +58,7 @@ create table indent(
     name varchar (20),
     product_name varchar (20),
     account int,
+    points int,
     date datetime
 );
 alter table indent auto_increment=1001;

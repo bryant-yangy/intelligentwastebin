@@ -10,4 +10,7 @@ public interface IndentService {
     void insert(Indent indent);
     List<Indent> findByUserName(String username);
 
+    List<Indent> findIdentPage(int page, int limit);
+
+    int getCount();
 }

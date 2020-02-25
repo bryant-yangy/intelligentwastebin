@@ -24,9 +24,37 @@ public class UserTest {
     ProductService productService;
     @Test
     void adduser() {
-//        User user = new User(0, new Date(), "zhangsann", Md5Util.md5("123456"),"false", 0);
-//        userService.addUser(user);
-//        System.out.println(user.getId());
+        User user = new User(0, new Date(), "zhangsan", Md5Util.md5("123456"),"false", 1000,"12345678910","张三");
+        userService.addUser(user);
+        user = new User(0, new Date(), "lisi", Md5Util.md5("123456"),"false", 1000,"12345678910","李四");
+        userService.addUser(user);
+        user = new User(0, new Date(), "wangwu", Md5Util.md5("123456"),"false", 1000,"12345678910","王五");
+        userService.addUser(user);
+        user = new User(0, new Date(), "wangbatian", Md5Util.md5("123456"),"false", 1000,"12345678910","王霸天");
+        userService.addUser(user);
+        user = new User(0, new Date(), "zuofei", Md5Util.md5("123456"),"false", 2000,"12345678910","左飞");
+        userService.addUser(user);
+        user = new User(0, new Date(), "houzi", Md5Util.md5("123456"),"false", 10000,"12345678910","猴子");
+        userService.addUser(user);
+        user = new User(0, new Date(), "huangjie", Md5Util.md5("123456"),"false", 10000,"12345678910","黄杰");
+        userService.addUser(user);
+        user = new User(0, new Date(), "zhengwu", Md5Util.md5("123456"),"false", 10000,"12345678910","郑午");
+        userService.addUser(user);
+        user = new User(0, new Date(), "maomao", Md5Util.md5("123456"),"false", 10000,"12345678910","毛毛");
+        userService.addUser(user);
+        user = new User(0, new Date(), "zhurourong", Md5Util.md5("123456"),"false", 1000,"12345678910","猪肉荣");
+        userService.addUser(user);
+        user = new User(0, new Date(), "wangyao", Md5Util.md5("123456"),"false", 1000,"12345678910","王瑶");
+        userService.addUser(user);
+        user = new User(0, new Date(), "liuyina", Md5Util.md5("123456"),"false", 1000,"12345678910","柳伊娜");
+        userService.addUser(user);
+        user = new User(0, new Date(), "suyi", Md5Util.md5("123456"),"false", 10000,"12345678910","苏亦");
+        userService.addUser(user);
+        user = new User(0, new Date(), "damao", Md5Util.md5("123456"),"false", 10000,"12345678910","大猫");
+        userService.addUser(user);
+        user = new User(0, new Date(), "heizi", Md5Util.md5("123456"),"false", 1000,"12345678910","黑子");
+        userService.addUser(user);
+        System.out.println(user.getId());
     }
     @Test
     void isUserExit(){

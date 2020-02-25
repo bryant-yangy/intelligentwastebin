@@ -9,6 +9,7 @@ import java.util.List;
 public interface ProductService {
      int insert(Product product);
      List<Product> findAll();
+     List<Product> findByPage(int page,int count);
      Product findById(int id);
      void updateProduct(Product product);
      int getCount();

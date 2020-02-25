@@ -8,10 +8,16 @@
 
 <mapper namespace="com.yyd.intelligentwastebin.mapper.IndentMapper">
     <select id="findByUserName"  resultType="com.yyd.intelligentwastebin.domain.Indent">
-      select id ,user_name userName ,product_name productName,account, date from indent where user_name = #{username};
+      select id ,user_name userName ,product_name productName,account, points,date from indent where user_name = #{username};
+    </select>
+    <select id="findByPage"  resultType="com.yyd.intelligentwastebin.domain.Indent">
+      select id ,user_name userName ,product_name productName,account,points, date from indent limit #{n},#{m};
     </select>
     <insert id="insert" useGeneratedKeys="true" keyProperty="id">
-        insert into indent(user_name,product_name ,account,date) value (#{userName},#{productName},#{account},#{date});
+        insert into indent(user_name,product_name ,account,date,points) value (#{userName},#{productName},#{account},#{date},#{points});
     </insert>
+    <select id="getCount" resultType="int">
+        select count(id) from indent;
+    </select>
 
 </mapper>
